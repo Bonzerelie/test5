@@ -103,12 +103,12 @@ function checkAnswer(selectedNote, button) {
   if (selectedNote === correctAnswer) {
     correctCount++;
     feedbackMessage.textContent = 'Correct!';
-    feedbackMessage.className = 'correct'; // Apply correct class for styling
+    feedbackMessage.className = 'feedback correct'; // Apply correct class for styling
     button.classList.add('correct'); // Change button color to green
   } else {
     incorrectCount++;
     feedbackMessage.textContent = `Incorrect! The correct answer was ${correctAnswer}.`;
-    feedbackMessage.className = 'incorrect'; // Apply incorrect class for styling
+    feedbackMessage.className = 'feedback incorrect'; // Apply incorrect class for styling
     button.classList.add('incorrect'); // Change button color to red
   }
 
@@ -142,6 +142,7 @@ function nextQuestion() {
   nextBtn.disabled = true;
   // Remove button color after moving to the next question
   noteButtonElements.forEach(button => button.classList.remove('correct', 'incorrect'));
+  feedbackMessage.textContent = ''; // Clear feedback when moving to next question
 }
 
 function resetScore() {
