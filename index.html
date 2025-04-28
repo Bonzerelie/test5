@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Piano Note Guessing Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Piano Note Guessing Game</h1>
+    
+    <div class="controls">
+      <button id="startBtn">Start Game</button>
+      <button id="playNoteBtn" disabled>Replay Note</button>
+      <button id="playReferenceBtn">Play Reference Note - C4</button>
+      <button id="nextBtn" disabled>Next</button>
+      <button id="resetScoreBtn">Reset Score</button>
+    </div>
+
+    <div class="buttons" id="noteButtons"></div>
+
+    <div class="scoreboard">
+      <p>Correct: <span id="correctCount">0</span></p>
+      <p>Incorrect: <span id="incorrectCount">0</span></p>
+      <p>Total: <span id="totalCount">0</span></p>
+      <p>Accuracy: <span id="accuracy">0%</span></p>
+    </div>
+
+    <!-- Feedback message will appear here -->
+    <div id="feedbackMessage" class="feedback"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
