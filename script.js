@@ -50,7 +50,7 @@ noteButtons.forEach(label => {
   const button = document.createElement('button');
   button.textContent = label;
   button.disabled = true;
-  button.addEventListener('click', () => checkAnswer(label));
+  button.addEventListener('click', () => checkAnswer(label, button));
   noteButtonsDiv.appendChild(button);
 });
 
@@ -97,17 +97,19 @@ function playReferenceNote() {
   referenceAudio.play();
 }
 
-function checkAnswer(selectedNote) {
+function checkAnswer(selectedNote, button) {
   const correctAnswer = simplifyNote(currentNote);
 
   if (selectedNote === correctAnswer) {
     correctCount++;
     feedbackMessage.textContent = 'Correct!';
     feedbackMessage.className = 'correct'; // Apply correct class for styling
+    button.classList.add('correct'); // Change button color to green
   } else {
     incorrectCount++;
     feedbackMessage.textContent = `Incorrect! The correct answer was ${correctAnswer}.`;
     feedbackMessage.className = 'incorrect'; // Apply incorrect class for styling
+    button.classList.add('incorrect'); // Change button color to red
   }
 
   updateScore();
@@ -138,6 +140,8 @@ function nextQuestion() {
   pickRandomNote();
   enableNoteButtons();
   nextBtn.disabled = true;
+  // Remove button color after moving to the next question
+  noteButtonElements.forEach(button => button.classList.remove('correct', 'incorrect'));
 }
 
 function resetScore() {
@@ -145,4 +149,6 @@ function resetScore() {
   incorrectCount = 0;
   updateScore();
   feedbackMessage.textContent = ''; // Clear the feedback when score is reset
+  // Remove button color after resetting score
+  noteButtonElements.forEach(button => button.classList.remove('correct', 'incorrect'));
 }
