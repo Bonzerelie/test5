@@ -81,3 +81,12 @@ button:disabled {
 .incorrect {
   color: #e74c3c; /* Red */
 }
+
+/* Styling for selected answer buttons */
+button.correct {
+  background-color: #27ae60; /* Green */
+}
+
+button.incorrect {
+  background-color: #e74c3c; /* Red */
+}
