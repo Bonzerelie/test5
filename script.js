@@ -44,7 +44,6 @@ const accuracySpan = document.getElementById('accuracy');
 
 const noteButtonsDiv = document.getElementById('noteButtons');
 const feedbackMessage = document.getElementById('feedbackMessage');
-const questionPrompt = document.getElementById('questionPrompt');
 
 // Initialize note buttons
 noteButtons.forEach(label => {
@@ -84,9 +83,6 @@ function pickRandomNote() {
   currentAudio = new Audio(audioFolder + currentNote + '.mp3');
   currentAudio.play();
   playNoteBtn.disabled = false;
-
-  // Display the question prompt
-  questionPrompt.textContent = 'What note was played?';
 }
 
 function replayNote() {
@@ -147,7 +143,6 @@ function nextQuestion() {
   // Remove button color after moving to the next question
   noteButtonElements.forEach(button => button.classList.remove('correct', 'incorrect'));
   feedbackMessage.textContent = ''; // Clear feedback when moving to next question
-  questionPrompt.textContent = ''; // Clear the question prompt
 }
 
 function resetScore() {
@@ -155,4 +150,6 @@ function resetScore() {
   incorrectCount = 0;
   updateScore();
   feedbackMessage.textContent = ''; // Clear the feedback when score is reset
-  // Remove button
+  // Remove button color after resetting score
+  noteButtonElements.forEach(button => button.classList.remove('correct', 'incorrect'));
+}
